@@ -1,0 +1,39 @@
+public class ArrayDistanceCalculator {
+    
+    public int findTheDistanceValue(int[] arr1, int[] arr2, int d) {
+        int distanceValue = 0;
+        
+        for (int i = 0; i < arr1.length; i++) {
+            boolean isValid = true;
+            
+            for (int j = 0; j < arr2.length; j++) {
+                if (Math.abs(arr1[i] - arr2[j]) <= d) {
+                    isValid = false; // Failed the condition
+                    break;           // No need to check remaining elements in arr2
+                }
+            }
+            
+            if (isValid) {
+                distanceValue++;
+            }
+        }
+        
+        return distanceValue;
+    }
+
+    public static void main(String[] args) {
+        ArrayDistanceCalculator calculator = new ArrayDistanceCalculator();
+        
+        int[] arr1 = {4, 5, 8};
+        int[] arr2 = {10, 9, 1, 8};
+        int d1 = 2;
+        System.out.println("Distance Value: " + calculator.findTheDistanceValue(arr1, arr2, d1)); 
+        // Output: 2 (Only 4 and 5 are valid. 8 fails because |8 - 8| <= 2)
+        
+        int[] arr3 = {1, 4, 2, 3};
+        int[] arr4 = {-4, -3, 6, 10, 20, 30};
+        int d2 = 3;
+        System.out.println("Distance Value: " + calculator.findTheDistanceValue(arr3, arr4, d2)); 
+        // Output: 2
+    }
+}
