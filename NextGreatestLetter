@@ -1,0 +1,17 @@
+public class NextGreatestLetter {
+    public static char nextGreatestLetter(char[] letters, char target) {
+        for (char letter : letters) {
+            if (letter > target) {
+                return letter;
+            }
+        }
+        return letters[0]; // Wrap around if target >= all elements
+    }
+
+    public static void main(String[] args) {
+        char[] letters = {'c', 'f', 'j'};
+        System.out.println(nextGreatestLetter(letters, 'a')); // Output: 'c'
+        System.out.println(nextGreatestLetter(letters, 'c')); // Output: 'f'
+        System.out.println(nextGreatestLetter(letters, 'j')); // Output: 'c'
+    }
+}
